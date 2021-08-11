@@ -22,6 +22,9 @@ public class Player {
     private String lastName;
 
     @Column(nullable = false)
+    private String position;
+
+    @Column(nullable = false)
     private Boolean isCaptain;
 
     @ManyToOne
