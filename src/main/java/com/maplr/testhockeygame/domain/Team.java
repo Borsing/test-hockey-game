@@ -19,7 +19,7 @@ public class Team {
     @Column(nullable = false)
     private String coach;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long year;
 
     @Column(nullable = false)
