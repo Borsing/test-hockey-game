@@ -20,8 +20,8 @@ public class SpringfoxConfiguration {
                 .build()
                 .useDefaultResponseMessages(false)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("TestHockeyGame")
-                        .description("TestHockeyGame")
+                        .title("Test Hockey Game Api")
+                        .description("Simple api to handle hockey team")
                         .version("0.0.1")
                         .build());
     }
