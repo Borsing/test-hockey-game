@@ -1,9 +1,9 @@
 package com.maplr.testhockeygame.service;
 
 import com.maplr.testhockeygame.domain.Player;
+import com.maplr.testhockeygame.exception.NotFoundException;
 import com.maplr.testhockeygame.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +20,7 @@ public class PlayerService {
                     newCaptain.setIsCaptain(true);
                     playerRepository.saveAll(playersOfTheTeam);
                     return newCaptain;
-                }).orElseThrow(() -> new ResourceNotFoundException("Player with the number " + playerNumber + " doesn't exist."));
+                }).orElseThrow(() -> new NotFoundException("Player with the number " + playerNumber + " doesn't exist."));
     }
 
 }

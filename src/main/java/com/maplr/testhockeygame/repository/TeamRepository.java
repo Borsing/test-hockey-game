@@ -9,4 +9,6 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 
     Optional<Team> findTeamByYear(final Long year);
 
+    Optional<Team> findTeamByIdOrYear(final Long id, final Long year);
+
 }

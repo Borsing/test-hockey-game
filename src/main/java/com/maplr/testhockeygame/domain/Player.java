@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class Player {
 
     @Id
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Long number;
 
     @Column(nullable = false)
@@ -29,5 +29,4 @@ public class Player {
 
     @ManyToOne
     private Team team;
-
 }
