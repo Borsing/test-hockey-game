@@ -1,0 +1,28 @@
+{
+  "id": 123,
+  "coach": "Benjamin Robert",
+  "year": 2019,
+  "players": [
+    {
+      "number": 11,
+      "name": "Jean",
+      "lastName": "Heinz",
+      "position": "goaltender",
+      "isCaptain": false
+    },
+    {
+      "number": 22,
+      "name": "Maxime",
+      "lastName": "Martin",
+      "position": "forward",
+      "isCaptain": false
+    },
+    {
+      "number": 33,
+      "name": "Celine",
+      "lastName": "Martin",
+      "position": "defenseman",
+      "isCaptain": true
+    }
+  ]
+}
