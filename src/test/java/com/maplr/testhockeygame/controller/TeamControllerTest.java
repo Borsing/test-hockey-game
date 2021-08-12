@@ -2,6 +2,7 @@ package com.maplr.testhockeygame.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maplr.testhockeygame.dto.PlayerDto;
+import com.maplr.testhockeygame.dto.TeamWithoutPlayersDto;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -80,6 +81,45 @@ class TeamControllerTest {
         return Stream.of(
                 arguments(2021L, new PlayerDto(88L, "Henry", "Carvil", "defenseman", true), 3),
                 arguments(2021L, new PlayerDto(99L, "Thomas", "Nabil", "defenseman", false), 4)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void testCreateTeam(final TeamWithoutPlayersDto teamWithoutPlayersDto) throws Exception {
+        // Given my team as json
+        var teamWithoutPlayersDtoJson = new ObjectMapper().writeValueAsString(teamWithoutPlayersDto);
+        var year = teamWithoutPlayersDto.getYear();
+
+        // When I want to create my team
+        client.perform(post("/api/team")
+                .contentType(APPLICATION_JSON)
+                .content(teamWithoutPlayersDtoJson)
+                .accept(APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+
+                // Then I expect the answer to be correct
+                .andExpect(status().is(201))
+                .andExpect(content().contentType(APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(teamWithoutPlayersDto.getId()))
+                .andExpect(jsonPath("$.coach").value(teamWithoutPlayersDto.getCoach()))
+                .andExpect(jsonPath("$.year").value(teamWithoutPlayersDto.getYear()))
+                .andExpect(jsonPath("$.players").value(Matchers.hasSize(0)));
+
+
+        // When I call my team created
+        client.perform(MockMvcRequestBuilders.get("/api/team/{year}", year)
+                .accept(APPLICATION_JSON_VALUE))
+                .andDo(MockMvcResultHandlers.print())
+                // I find my team
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.id").value(teamWithoutPlayersDto.getId()));
+    }
+
+    static Stream<Arguments> testCreateTeam() {
+        return Stream.of(
+                arguments(new TeamWithoutPlayersDto(1011L, "Eric Smith", 2022L)),
+                arguments(new TeamWithoutPlayersDto(1213L, "Mike Toledo", 2023L))
         );
     }
 }
