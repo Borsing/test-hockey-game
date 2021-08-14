@@ -35,7 +35,7 @@ class PlayerControllerTest {
         client.perform(put("/api/player/captain/{playerNumber}", playerNumber)
                 .accept(APPLICATION_JSON_VALUE))
                 .andDo(MockMvcResultHandlers.print())
-                // Then I expect the player is the captain
+        // Then I expect the player is the captain
                 .andExpect(status().is(statusExpected))
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(jsonPath("$.isCaptain").value(true));
