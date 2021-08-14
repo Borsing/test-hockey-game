@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+import static java.lang.Boolean.TRUE;
+
 @Service
 @RequiredArgsConstructor
 public class TeamService {
@@ -28,7 +30,7 @@ public class TeamService {
         return teamRepository.findTeamByYear(yearOfTheTeam).map(team -> {
             playerToAdd.setTeam(team);
             var playerAdded = playerRepository.save(playerToAdd);
-            if (playerToAdd.getIsCaptain()) {
+            if (TRUE.equals(playerToAdd.getIsCaptain())) {
                 return playerService.becomeCaptainOfTeam(playerAdded.getNumber());
             }
             return playerAdded;
