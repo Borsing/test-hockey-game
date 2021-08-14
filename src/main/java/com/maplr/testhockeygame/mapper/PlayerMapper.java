@@ -10,8 +10,8 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 @Mapper(nullValuePropertyMappingStrategy = IGNORE, componentModel = "spring")
 public interface PlayerMapper {
 
-    PlayerDto toPlayerDto(Player player);
+    PlayerDto toPlayerDto(final Player player);
 
     @Mapping(target = "team", ignore = true)
-    Player toPlayer(PlayerDto playerDto);
+    Player toPlayer(final PlayerDto playerDto);
 }

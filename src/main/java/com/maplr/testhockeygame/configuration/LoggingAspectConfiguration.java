@@ -17,7 +17,7 @@ public class LoggingAspectConfiguration {
     /**
      * Get logger of the current joinPoint
      */
-    private Logger logger(JoinPoint joinPoint) {
+    private Logger logger(final JoinPoint joinPoint) {
         return LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringTypeName());
     }
 
@@ -25,7 +25,7 @@ public class LoggingAspectConfiguration {
      * Log Request and response from controller layer
      */
     @Around("within(@org.springframework.web.bind.annotation.RestController *)")
-    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object logAround(final ProceedingJoinPoint joinPoint) throws Throwable {
         var logger = logger(joinPoint);
         var methodRequested = joinPoint.getSignature().getName();
         var methodArgs = Arrays.toString(joinPoint.getArgs());

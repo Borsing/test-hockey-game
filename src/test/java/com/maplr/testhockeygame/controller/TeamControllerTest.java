@@ -35,7 +35,7 @@ class TeamControllerTest {
 
     @ParameterizedTest
     @CsvSource({"2019", "2020"})
-    void testGetTeamByYear(Long year) throws Exception {
+    void testGetTeamByYear(final Long year) throws Exception {
         // Setup the following body expectation
         var jsonExpected = Files.readString(Paths.get(this.getClass().getResource("getTeamByYear" + year + "BodyExpected.json").toURI()));
 
@@ -44,7 +44,7 @@ class TeamControllerTest {
                 .accept(APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
 
-                // Then I expect the answer to be correct
+                // Then I expect the answer to be 200 with the correct team
                 .andExpect(status().is(200))
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(content().json(jsonExpected, false));
@@ -56,14 +56,14 @@ class TeamControllerTest {
         // Given the player dto as json
         var playerToAddInTeamJson = new ObjectMapper().writeValueAsString(playerToAddInTeam);
 
-        // When I call my team
+        // When I want to create a player
         client.perform(post("/api/team/{year}", year)
                 .contentType(APPLICATION_JSON)
                 .content(playerToAddInTeamJson)
                 .accept(APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
 
-                // Then I expect the answer to be correct
+                // Then I expect to get back my player as response with 201
                 .andExpect(status().is(201))
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andExpect(content().json(playerToAddInTeamJson, false));
