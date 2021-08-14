@@ -34,7 +34,7 @@ class TeamControllerTest {
     private MockMvc client;
 
     @ParameterizedTest
-    @CsvSource({"2019", "2020"})
+    @CsvSource({"2018", "2019"})
     void testGetTeamByYear(final Long year) throws Exception {
         // Setup the following body expectation
         var jsonExpected = Files.readString(Paths.get(this.getClass().getResource("getTeamByYear" + year + "BodyExpected.json").toURI()));
