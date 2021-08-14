@@ -15,12 +15,12 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 @Mapper(nullValuePropertyMappingStrategy = IGNORE, uses = PlayerMapper.class, componentModel = "spring")
 public interface TeamMapper {
 
-    TeamDto toTeamDto(Team team);
+    TeamDto toTeamDto(final Team team);
 
     @Mapping(target = "players", source = "players")
-    Team toTeam(TeamWithoutPlayersDto teamWithoutPlayersDto, List<Player> players);
+    Team toTeam(final TeamWithoutPlayersDto teamWithoutPlayersDto, final List<Player> players);
 
-    default Team toTeam(TeamWithoutPlayersDto teamWithoutPlayersDto) {
+    default Team toTeam(final TeamWithoutPlayersDto teamWithoutPlayersDto) {
         return this.toTeam(teamWithoutPlayersDto, Collections.emptyList());
     }
 }
