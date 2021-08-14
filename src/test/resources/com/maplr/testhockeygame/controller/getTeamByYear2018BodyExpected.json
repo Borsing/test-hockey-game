@@ -1,0 +1,21 @@
+{
+  "id": 210,
+  "coach": "Jeremie Benneteau",
+  "year": 2018,
+  "players": [
+    {
+      "number": 12,
+      "name": "Kevin",
+      "lastName": "Gervay",
+      "position": "defenseman",
+      "isCaptain": false
+    },
+    {
+      "number": 13,
+      "name": "Corentin",
+      "lastName": "Chardan",
+      "position": "defenseman",
+      "isCaptain": true
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 insert into TEAM(id, coach, year) values
 (123, 'Benjamin Robert', 2019),
 (456, 'Vincent Heurtault', 2020),
-(789, 'Remi Laot', 2021);
+(789, 'Remi Laot', 2021),
+(210, 'Jeremie Benneteau', 2018);
 
 insert into PLAYER(number, name, last_Name, position, is_Captain, team_id) values
 (11, 'Jean', 'Heinz', 'goaltender', false, 123),
@@ -10,4 +11,6 @@ insert into PLAYER(number, name, last_Name, position, is_Captain, team_id) value
 (44, 'Baptiste', 'Dupont', 'goaltender', false, 456),
 (55, 'Benoit', 'Duquenoy', 'defenseman', false, 456),
 (66, 'Simon', 'Mac', 'doaltender', true, 789),
-(77, 'Auguste', 'Chirron', 'forward', false, 789);
+(77, 'Auguste', 'Chirron', 'forward', false, 789),
+(12, 'Kevin', 'Gervay', 'defenseman', false, 210),
+(13, 'Corentin', 'Chardan', 'defenseman', true, 210);
